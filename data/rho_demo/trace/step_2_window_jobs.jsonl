@@ -1,0 +1,2 @@
+{"job_id": "J004", "name": "Crankshaft", "due_time": 200, "reward": 350, "operations": [{"op_id": "O043", "name": "Grinding", "machines": ["M4"], "processing_time": 30}], "earliest_start": 40}
+{"job_id": "J001", "name": "EngineBlock", "due_time": 240, "reward": 500, "operations": [{"op_id": "O013", "name": "Grinding", "machines": ["M4"], "processing_time": 20}], "earliest_start": 75}

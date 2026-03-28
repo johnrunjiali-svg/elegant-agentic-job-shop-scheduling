@@ -1,0 +1,42 @@
+{
+  "M1-A": {
+    "start_time": 25,
+    "end_time": null
+  },
+  "M1-B": {
+    "start_time": 0,
+    "end_time": null
+  },
+  "M1-C": {
+    "start_time": 0,
+    "end_time": null
+  },
+  "M2-A": {
+    "start_time": 70,
+    "end_time": null
+  },
+  "M2-B": {
+    "start_time": 0,
+    "end_time": null
+  },
+  "M2-C": {
+    "start_time": 0,
+    "end_time": null
+  },
+  "M3-A": {
+    "start_time": 75,
+    "end_time": null
+  },
+  "M3-B": {
+    "start_time": 0,
+    "end_time": null
+  },
+  "M4-A": {
+    "start_time": 80,
+    "end_time": null
+  },
+  "M4-B": {
+    "start_time": 55,
+    "end_time": null
+  }
+}

@@ -1,0 +1,4 @@
+{"group_id": "MG001", "name": "M1", "description": "CNC Drilling Station", "machines": [{"machine_id": "M1-A", "name": "CNC Drill Alpha"}, {"machine_id": "M1-B", "name": "CNC Drill Beta"}, {"machine_id": "M1-C", "name": "CNC Drill Gamma"}]}
+{"group_id": "MG002", "name": "M2", "description": "Milling Center", "machines": [{"machine_id": "M2-A", "name": "Mill Alpha"}, {"machine_id": "M2-B", "name": "Mill Beta"}, {"machine_id": "M2-C", "name": "Mill Gamma"}]}
+{"group_id": "MG003", "name": "M3", "description": "Turning Center", "machines": [{"machine_id": "M3-A", "name": "Lathe Alpha"}, {"machine_id": "M3-B", "name": "Lathe Beta"}]}
+{"group_id": "MG004", "name": "M4", "description": "Grinding Station", "machines": [{"machine_id": "M4-A", "name": "Grinder Alpha"}, {"machine_id": "M4-B", "name": "Grinder Beta"}]}

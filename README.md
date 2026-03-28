@@ -10,6 +10,8 @@ Job: consists of a sequence of operations, has a value, and a due time. If finis
 
 Operation: Can be done on a set of machines, takes some processing time.
 
+For now, let's assume a job can only works on one machine group.
+
 > Rolling Horizon Optimization
 
 We can use solver for this problem, however, the problem could be large, consists of hundreds of job, and thousands of operations. One natural (?) way for dealing with this is dividing problems into solvable sub windows. 
@@ -38,7 +40,32 @@ A heuristic function, given set of machines, and weights over them,  set of jobs
 
 > Solver on a Window
 
-An OR-Tools sovler, given set of machines, set of jobs, and respectively start and end time on each machine, return the scheduled start and end time for each operation. If an operation's machine isn't find inside the set of machines given to the solver, then it means that, we assume that we have redundant enough capacity on that machines.
+好的，我们现在来写 Solver。这个 Solver 的相关信息你可以在 README 里找到。我先跟你说一下几个关键点：
+
+1. **基本输入与格式**
+   *   Solver 会在一个 window（时间窗口）上进行 solve。
+   *   输入包括所有machines的情况，以及 jobs 的情况。
+   *   你先参考刚才写的 data loader。不管加载出来的是 JSONL 还是其他数据格式，直接在函数里沿用那个格式来处理，保持一致。
+
+2. **时间参数设置**
+   *   我们会给所有机器设置 Start Time 和 End Time。
+   *   请在代码里设置：Start Time 是必填项（Required），End Time 是选填项（Optional）。如果 End Time 没给，就默认为正无穷。
+   *   所有的排程必须落在 [Start Time, End Time] 范围内。如果排不下，程序应该返回一个错误提示，说明时间范围不合法。
+
+3. **机器组与产能约束**
+   *   除了所有机器的start time end time详细列表（具体到每一台机器，如 M1-A），我们还会额外传入一组参数，即“需要关注的机器组”列表（例如 M1 组）。
+   *   这些被指定的机器组是“瓶颈机组”。我们假设其他未指定的机器组产能是无限的。
+   *   **实现细节：**
+       *   对于产能无限的机器，你不需要创建变量进行优化。
+       *   但是，如果任务中间涉及在这些“无限产能”机器上进行操作，你必须处理好这些 operation 的时长，并把相应的约束加好，确保整个任务的时间链条是完整的。
+       *   Solver 的核心工作就是针对给定的瓶颈机组进行排程。
+
+4. **开发建议**
+   *   建议使用 OR-Tools 来实现。
+   *   你可以直接用 `uv add ortools` 安装环境。
+   *   写完后，你可以自己找一些数据测试一下这个 Solver 的逻辑。
+
+你明白我的意思了吧？按这个思路去实现就好。 machines, set of jobs, and respectively start and end time on each machine, return the scheduled start and end time for each operation. If an operation's machine isn't find inside the set of machines given to the solver, then it means that, we assume that we have redundant enough capacity on that machines.
 
 The agent can choose how to form the window, which machines taken into account, and which machines viewing as having redundant capacity. The agent also choose what jobs to taken into consider in that window, this can be done by calling the heuristic function.
 

@@ -1,0 +1,17 @@
+{
+  "fully_fixed_this_step": [
+    "J003",
+    "J006"
+  ],
+  "partial_fixes": {
+    "J004": [
+      "O041",
+      "O042"
+    ],
+    "J001": [
+      "O011",
+      "O012"
+    ]
+  },
+  "total_fixed_ops": 13
+}
